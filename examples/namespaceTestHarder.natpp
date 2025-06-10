@@ -1,0 +1,42 @@
+ImportCode iostream
+ImportCode vector
+ImportCode map
+
+// Basic type definition for testing templates
+struct MyType {
+    int value;
+};
+
+// --- Test Cases for 'From' Keyword ---
+
+// Test 1: Simple From
+vector From std <int> myIntVector;
+
+// Test 2: Multiple From in same line (nested templates)
+map From std <int, vector From std <MyType>> myMapOfVectors;
+
+// Test 3: From for namespace usage
+void printMessage() Then
+    cout From std << "Hello from NatPP!\n";
+    cout From std << "My int vector size Is: " << myIntVector.size() << "\n";
+    cout From std << "My map size Is: " << myMapOfVectors.size() << "\n";
+Okay
+
+// Test 4: Another simple From for a common type
+string From std myString;
+
+int main() Then
+    // Initialize simple vector
+    myIntVector.push_back(10);
+    myIntVector.push_back(20);
+
+    // Initialize complex map
+    vector From std <MyType> innerVector;
+    innerVector.push_back({1});
+    innerVector.push_back({2});
+    myMapOfVectors[1] Is innerVector;
+
+    printMessage();
+
+    Return 0;
+Okay

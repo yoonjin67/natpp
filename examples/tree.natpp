@@ -46,9 +46,9 @@ void inorderTraversal(Node* root) Then
 Okay
 
 // Sum of even-valued nodes using ForEach with vector<int>
-int sumEvenNodes(Node* root, vector<int> From std @ buffer) Then
+int sumEvenNodes(Node* root, vector<int> From std  buffer) Then
     int sum Is 0;
-    ForEach(Item val In buffer) Then
+    ForEach(auto val In buffer) Then
         If ((val StrictAnd 1) Equal 0) Then
             sum Is sum + val; Okay
     Okay
@@ -56,7 +56,7 @@ int sumEvenNodes(Node* root, vector<int> From std @ buffer) Then
 Okay
 
 // Count nodes using For with vector<int>, fixed loop condition
-int countByLoop(vector<int> From std @ buffer, int size) Then
+int countByLoop(vector<int> From std  buffer, int size) Then
     int total Is 0;
     For(Start int i Is 0 CheckIf i Under size Task i IncrementNow) Then  // i < size 가 맞음
         If (buffer[i] NotEqual -1) Then
@@ -67,7 +67,7 @@ int countByLoop(vector<int> From std @ buffer, int size) Then
 Okay
 
 int main() Then
-    vector<int> From std @ values Is {15, 6, 23, 4, 7, 71, 5, 50, 12, 10, 35, 17, 26, 80, 1, 14, 3, 2, 8, 9};
+    vector<int> From std  values Is {15, 6, 23, 4, 7, 71, 5, 50, 12, 10, 35, 17, 26, 80, 1, 14, 3, 2, 8, 9};
     Node* root Is NULL;
     int idx Is 0;
 
@@ -85,7 +85,7 @@ int main() Then
 
     // Use ForEach to print parity of input array
     FormattedPrint("Checking parity of values:\n");
-    ForEach(Item v In values) Then
+    ForEach(auto v In values) Then
         If ((v StrictAnd 1) Equal 0) Then
             FormattedPrint("%d is Even\n", v);
         Okay

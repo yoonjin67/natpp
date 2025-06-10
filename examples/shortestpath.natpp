@@ -1,0 +1,204 @@
+ImportCode iostream
+ImportCode vector
+ImportCode queue
+ImportCode limits
+ImportCode chrono
+ImportCode cmath // For sqrt for A* heuristic
+
+// Define constants
+Define INF 1000000000 // Represents infinity for distances
+
+// Define a struct for a node in the graph (value, weight)
+// This is C++ syntax, as NatPP doesn't have struct/class definitions
+struct Node {
+    int value;
+    int weight; // For edges
+};
+
+// Define a struct for priority queue (distance, node_id)
+// Used in Dijkstra and A*
+struct State {
+    int id;
+    long long cost;
+
+    // Custom comparator for priority queue (min-heap)
+    bool operator>(const State& other) const {
+        Return cost Exceed other.cost;
+    }
+};
+
+// Heuristic function for A* (Euclidean distance)
+// Changed 'CONST vector From std <pair From std <int, int>>' to C++ native
+double calculateHeuristic(int u, int v,
+                             const std::vector<std::pair<int, int>>& coordinates) Then
+    CONST int x1 Is coordinates[u].first;
+    CONST int y1 Is coordinates[u].second;
+    CONST int x2 Is coordinates[v].first;
+    CONST int y2 Is coordinates[v].second;
+    // Changed 'Return sqrt From std ' to C++ native
+    return std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2));
+Okay
+
+// Dijkstra's Algorithm implementation
+// Changed 'CONST vector From std <vector From std <Node>>' to C++ native
+void dijkstra(int startNode, int endNode, int numNodes,
+              const std::vector<std::vector<Node>>& graph) Then
+    // Changed 'priority_queue From std <State, vector From std <State>, greater From std <State>>' to C++ native
+    std::priority_queue<State, std::vector<State>, std::greater<State>> pq;
+    // Changed 'vector From std <long long>' to C++ native
+    std::vector<long long> dist(numNodes, INF);
+
+    dist[startNode] Is 0;
+    State initial_state;
+    initial_state.id Is startNode;
+    initial_state.cost Is 0;
+    pq.push(initial_state);
+
+    While (Not pq.empty()) Then
+        State current_state Is pq.top();
+        pq.pop();
+
+        CONST int u Is current_state.id;
+        CONST long long d Is current_state.cost;
+
+        If (d Exceed dist[u]) Then
+            Continue;
+        Okay
+
+        ForEach(Node neighbor_node In graph[u]) Then
+            CONST int v Is neighbor_node.value;
+            CONST int weight Is neighbor_node.weight;
+            If (dist[u] + weight Under dist[v]) Then
+                dist[v] Is dist[u] + weight;
+                State next_state;
+                next_state.id Is v;
+                next_state.cost Is dist[v];
+                pq.push(next_state);
+            Okay
+        Okay
+    Okay
+
+    FormattedPrint("Dijkstra's Shortest Path from %d to %d: ", startNode, endNode);
+    If (dist[endNode] Equal INF) Then
+        FormattedPrint("Path does not exist.\n");
+    Okay
+    Else Then
+        FormattedPrint("%lld\n", dist[endNode]);
+    Okay
+Okay
+
+// A* Algorithm implementation
+// Changed 'CONST vector From std <vector From std <Node>>' and 'CONST vector From std <pair From std <int, int>>' to C++ native
+void astar(int startNode, int endNode, int numNodes,
+           const std::vector<std::vector<Node>>& graph,
+           const std::vector<std::pair<int, int>>& coordinates) Then
+    // Changed 'priority_queue From std <State, vector From std <State>, greater From std <State>>' to C++ native
+    std::priority_queue<State, std::vector<State>, std::greater<State>> pq;
+    // Changed 'vector From std <long long>' to C++ native
+    std::vector<long long> g_score(numNodes, INF);
+    // Changed 'vector From std <long long>' to C++ native
+    std::vector<long long> f_score(numNodes, INF);
+
+    g_score[startNode] Is 0;
+    f_score[startNode] Is calculateHeuristic(startNode, endNode, coordinates);
+
+    State initial_state;
+    initial_state.id Is startNode;
+    initial_state.cost Is f_score[startNode];
+    pq.push(initial_state);
+
+    While (Not pq.empty()) Then
+        State current_state Is pq.top();
+        pq.pop();
+
+        CONST int u Is current_state.id;
+        CONST long long current_f_cost Is current_state.cost;
+
+        If (u Equal endNode) Then
+            Break; // Found the shortest path to endNode
+        Okay
+
+        If (current_f_cost Exceed f_score[u]) Then
+            Continue;
+        Okay
+
+        ForEach(Node neighbor_node In graph[u]) Then
+            CONST int v Is neighbor_node.value;
+            CONST int weight Is neighbor_node.weight;
+
+            long long tentative_g_score Is g_score[u] + weight;
+
+            If (tentative_g_score Under g_score[v]) Then
+                g_score[v] Is tentative_g_score;
+                f_score[v] Is g_score[v] + calculateHeuristic(v, endNode, coordinates);
+                State next_state;
+                next_state.id Is v;
+                next_state.cost Is f_score[v];
+                pq.push(next_state);
+            Okay
+        Okay
+    Okay
+
+    FormattedPrint("A* Shortest Path from %d to %d: ", startNode, endNode);
+    If (g_score[endNode] Equal INF) Then
+        FormattedPrint("Path does not exist.\n");
+    Okay
+    Else Then
+        FormattedPrint("%lld\n", g_score[endNode]);
+    Okay
+Okay
+
+int main() Then
+    CONST int numNodes Is 5; // Left as NatPP, should be simple enough for 'CONST' to handle
+    // Changed 'vector From std <vector From std <Node>>' to C++ native
+    std::vector<std::vector<Node>> graph(numNodes);
+    // Graph:
+    // 0 --1--> 1
+    // |   \   |
+    // 3     2  1
+    // |       \|
+    // 2 --1--> 3 --5--> 4
+
+    graph[0].push_back({1, 1});
+    graph[0].push_back({2, 3});
+    graph[1].push_back({0, 1});
+    graph[1].push_back({3, 1});
+    graph[1].push_back({2, 2}); // Edge from 1 to 2
+    graph[2].push_back({0, 3});
+    graph[2].push_back({1, 2}); // Edge from 2 to 1
+    graph[2].push_back({3, 1});
+    graph[3].push_back({1, 1});
+    graph[3].push_back({2, 1});
+    graph[3].push_back({4, 5});
+
+    // Node coordinates for A* heuristic (example: 2D grid)
+    // Changed 'CONST vector From std <pair From std <int, int>>' to C++ native
+    const std::vector<std::pair<int, int>> coordinates = {
+        {0, 0}, // Node 0
+        {1, 0}, // Node 1
+        {0, 1}, // Node 2
+        {1, 1}, // Node 3
+        {2, 1}  // Node 4
+    };
+
+    CONST int startNode Is 0; // Left as NatPP
+    CONST int endNode Is 4; // Left as NatPP
+
+    // Measure Dijkstra's performance
+    // Changed 'high_resolution_clock From std::chrono ::now()' to C++ native
+    auto start_dijkstra = std::chrono::high_resolution_clock::now();
+    dijkstra(startNode, endNode, numNodes, graph);
+    auto end_dijkstra = std::chrono::high_resolution_clock::now();
+    // Changed 'duration_cast From std::chrono <microseconds From std::chrono >' to C++ native
+    auto duration_dijkstra = std::chrono::duration_cast<std::chrono::microseconds>(end_dijkstra - start_dijkstra);
+    FormattedPrint("Dijkstra's execution time: %lld microseconds\n\n", duration_dijkstra.count());
+
+    // Measure A*'s performance
+    auto start_astar = std::chrono::high_resolution_clock::now();
+    astar(startNode, endNode, numNodes, graph, coordinates);
+    auto end_astar = std::chrono::high_resolution_clock::now();
+    auto duration_astar = std::chrono::duration_cast<std::chrono::microseconds>(end_astar - start_astar);
+    FormattedPrint("A* execution time: %lld microseconds\n", duration_astar.count());
+
+    Return 0;
+Okay

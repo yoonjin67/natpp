@@ -1,5 +1,6 @@
-ImportCode stdio.h
 ImportCode vector
+ImportCode iostream
 int main() Then
-    vector<int> From std @ values = {15, 6};
+    vector<int> From std  values = {15, 6};
+    cout From std MoveLeft values[0] MoveLeft values[1];
 Okay

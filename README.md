@@ -27,6 +27,8 @@ Below are the supported DSL keywords and their corresponding C/C++ equivalents:
 | `MoveLeft`       | `<<`             |
 | `MoveRight`      | `>>`             |
 | `Xor`            | `^`              |
+C++ Redirection and bit shift has unified into MoveLeft, MoveRight.
+This gives visual, and integrated insight.
 
 ### Comparison Operators
 | DSL Keyword     | C/C++ Equivalent |
@@ -47,7 +49,9 @@ Below are the supported DSL keywords and their corresponding C/C++ equivalents:
 ### Control Flow
 | DSL Keyword             | C/C++ Equivalent         |
 |--------------------------|--------------------------|
-| `CheckCasesIn`           | `switch`               |
+| `CheckCasesIn`           | `switch`                |
+| `Continue`               | `continue`              |
+| `Break`                  | `break`                 |
 | `If`                     | `if`                    |
 | `Else`                   | `else`                  |
 | `While`                  | `while`                 |
