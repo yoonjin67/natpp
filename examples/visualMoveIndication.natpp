@@ -2,5 +2,5 @@ ImportCode vector
 ImportCode iostream
 int main() Then
     vector<int> From std  values = {15, 6};
-    cout From std MoveLeft values[0] MoveLeft values[1];
+    cout From std MoveLeft (values[0] MoveLeft 1) MoveLeft (values[1] MoveLeft 1);
 Okay
