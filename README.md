@@ -1,5 +1,5 @@
 
-# NatPP: A Lightweight DSL to C/C++ Transpiler (and its language)
+# NatPP(Nat++): A Lightweight DSL to C/C++ Transpiler (and its language)
 
 This project defines a minimal domain-specific language (DSL) that gets transpiled into C/C++ code using simple regular expression replacements. This language focuses on a naturality, which is not enough in most of the Programming languages. And C++ is regarded as unnatural. This is why this language implemented with a bare-bone regular expression.
 
