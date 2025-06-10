@@ -1,0 +1,107 @@
+ImportCode stdio.h
+ImportCode stdlib.h
+ImportCode stdbool.h
+ImportCode vector
+
+Define MAX_NODES 20
+
+// Define structure for binary tree node
+typedef struct Node Then
+    int value;
+    struct Node *left;
+    struct Node *right;
+Okay Node;
+
+// Function to create new node
+Node* createNode(int val) Then
+    Node* newNode Is (Node*) malloc(sizeof(Node));
+    newNode->value Is val;
+    newNode->left Is NULL;
+    newNode->right Is NULL;
+    Return newNode;
+Okay
+
+// Insert node into binary search tree
+Node* insertNode(Node* root, int val) Then
+    If (root Equal NULL) Then
+        Return createNode(val);
+    Okay
+    Else If (val Under root->value) Then
+        root->left Is insertNode(root->left, val);
+    Okay
+    Else Then
+        root->right Is insertNode(root->right, val);
+    Okay
+    Return root;
+Okay
+
+// Inorder traversal to print tree nodes
+void inorderTraversal(Node* root) Then
+    If (root Equal NULL) Then
+        Return;
+    Okay
+    inorderTraversal(root->left);
+    FormattedPrint("%d ", root->value);
+    inorderTraversal(root->right);
+Okay
+
+// Sum of even-valued nodes using ForEach with vector<int>
+int sumEvenNodes(Node* root, vector<int> From std @ buffer) Then
+    int sum Is 0;
+    ForEach(Item val In buffer) Then
+        If ((val StrictAnd 1) Equal 0) Then
+            sum Is sum + val; Okay
+    Okay
+    Return sum;
+Okay
+
+// Count nodes using For with vector<int>, fixed loop condition
+int countByLoop(vector<int> From std @ buffer, int size) Then
+    int total Is 0;
+    For(Start int i Is 0 CheckIf i Under size Task i IncrementNow) Then  // i < size 가 맞음
+        If (buffer[i] NotEqual -1) Then
+            total Is total + 1;
+        Okay
+    Okay
+    Return total;
+Okay
+
+int main() Then
+    vector<int> From std @ values Is {15, 6, 23, 4, 7, 71, 5, 50, 12, 10, 35, 17, 26, 80, 1, 14, 3, 2, 8, 9};
+    Node* root Is NULL;
+    int idx Is 0;
+
+    // Build BST
+    While (idx Under MAX_NODES) Then
+        root Is insertNode(root, values[idx]);
+        idx IncrementNow;
+    Okay
+    FormattedPrint("Binary Search Tree created.\n");
+
+    // Print inorder traversal
+    FormattedPrint("Inorder Traversal: ");
+    inorderTraversal(root);
+    FormattedPrint("\n");
+
+    // Use ForEach to print parity of input array
+    FormattedPrint("Checking parity of values:\n");
+    ForEach(Item v In values) Then
+        If ((v StrictAnd 1) Equal 0) Then
+            FormattedPrint("%d is Even\n", v);
+        Okay
+        Else Then
+            FormattedPrint("%d is Odd\n", v);
+        Okay
+    Okay
+
+    // Use For loop to count non-negative values
+    int count Is countByLoop(values, MAX_NODES);
+    FormattedPrint("Number of valid values: %d\n", count);
+
+    // Sum even values using ForEach
+    int sumEven Is sumEvenNodes(root, values);
+    FormattedPrint("Sum of even values: %d\n", sumEven);
+
+    Return 0;
+Okay
+

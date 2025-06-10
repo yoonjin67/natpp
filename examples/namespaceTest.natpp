@@ -1,0 +1,5 @@
+ImportCode stdio.h
+ImportCode vector
+int main() Then
+    vector<int> From std @ values = {15, 6};
+Okay
