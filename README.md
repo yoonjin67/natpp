@@ -22,7 +22,7 @@ Below are the supported DSL keywords and their corresponding C/C++ equivalents:
 | `Or`             | `||`             |
 | `Not`            | `!`              |
 | `StrictAnd`      | `&`              |
-| `StrictOr`       | `&&`             |
+| `StrictOr`       | `|`             |
 | `ReverseBit`     | `~`              |
 | `MoveLeft`       | `<<`             |
 | `MoveRight`      | `>>`             |
