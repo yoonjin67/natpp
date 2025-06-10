@@ -56,7 +56,7 @@ This gives visual, and integrated insight.
 | `Else`                   | `else`                  |
 | `While`                  | `while`                 |
 | `For(Start A CheckIf B Task C)` | `for (A; B; C)`  |
-| `ForEach(Item x In y)`   | `for (auto x : y)`      |
+| `ForEach(Item x In y)`   | `for (Item x : y)`      |
 | `member From namespace`  | `namespace::member` |
 
 ### Preprocessing and I/O

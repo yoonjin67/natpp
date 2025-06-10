@@ -1,0 +1,17 @@
+ImportCode iostream
+ImportCode map
+ImportCode string
+
+int main()
+Then
+    map From std <string From std, int> dict;
+    
+    dict["apple"] Is 5;
+    dict["banana"] Is 3;
+    
+    ForEach(auto pair In dict)
+    Then
+        cout From std MoveLeft pair.first MoveLeft " " MoveLeft pair.second MoveLeft endl From std;
+    Okay
+
+Okay
