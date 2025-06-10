@@ -27,6 +27,7 @@ Below are the supported DSL keywords and their corresponding C/C++ equivalents:
 | `MoveLeft`       | `<<`             |
 | `MoveRight`      | `>>`             |
 | `Xor`            | `^`              |
+----------------
 C++ Redirection and bit shift has unified into MoveLeft, MoveRight.
 This gives visual, and integrated insight.
 
