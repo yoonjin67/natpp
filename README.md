@@ -13,26 +13,26 @@ The DSL provides human-readable or alternative keywords for common C/C++ constru
 
 File extension is `*.natpp`.
 Below are the supported DSL keywords and their corresponding C/C++ equivalents:
+Every location, that requires {} in C++ should get proper Then, Okay.
 
 ### Logical and Bitwise Operators
-| DSL Keyword     | C/C++ Equivalent |
+| DSL Keyword     | C/C++ Equivalent  |
 |------------------|------------------|
 | `Is`             | `=`              |
 | `And`            | `&&`             |
 | `Or`             | `||`             |
 | `Not`            | `!`              |
 | `StrictAnd`      | `&`              |
-| `StrictOr`       | `|`             |
+| `StrictOr`       | `|`              |
 | `ReverseBit`     | `~`              |
 | `MoveLeft`       | `<<`             |
 | `MoveRight`      | `>>`             |
 | `Xor`            | `^`              |
-----------------
 C++ Redirection and bit shift has unified into MoveLeft, MoveRight.
 This gives visual, and integrated insight.
 
 ### Comparison Operators
-| DSL Keyword     | C/C++ Equivalent |
+| DSL Keyword      | C/C++ Equivalent |
 |------------------|------------------|
 | `Under`          | `<`              |
 | `Exceed`         | `>`              |
@@ -46,10 +46,22 @@ This gives visual, and integrated insight.
 |------------------|------------------|
 | `Then`           | `{`              |
 | `Okay`           | `}`              |
+|--------------------------------------
+
+### Miscellanous Qualifiers
+| DSL Keyword        | C/C++ Equivalent |
+|--------------------|------------------|
+|   `CONST`          | `const`          |
+|   `VOLATILE`       | `volatile`       |
+|   `RESTRICT`       | `restrict`       |
+|   `REGISTER`       | `register`       |
+|   `THREADLOCAL`    | `thread_local`   |
+|   `MUTABLE    `    | `mutable`        |
+|---------------------------------------
 
 ### Control Flow
 | DSL Keyword             | C/C++ Equivalent         |
-|--------------------------|--------------------------|
+|--------------------------|-------------------------|
 | `CheckCasesIn`           | `switch`                |
 | `Continue`               | `continue`              |
 | `Break`                  | `break`                 |
@@ -58,11 +70,17 @@ This gives visual, and integrated insight.
 | `While`                  | `while`                 |
 | `For(Start A CheckIf B Task C)` | `for (A; B; C)`  |
 | `ForEach(Item x In y)`   | `for (Item x : y)`      |
-| `member From namespace`  | `namespace::member` |
+| `member From namespace`  | `namespace::member`     |
+|----------------------------------------------------
+*warning: Do not use function(result1) From std. Correct form is indicated below*
+```
+function From std (result1);
+CONST int a = function From std (result1);
+```
 
 ### Preprocessing and I/O
 | DSL Keyword                        | C/C++ Equivalent      |
-|------------------------------------|------------------------|
+|------------------------------------|-----------------------|
 | `FormattedPrint`                   | `printf`              |
 | `FormattedScan`                    | `scanf`               |
 | `Define`                           | `#define`             |

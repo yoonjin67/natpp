@@ -7,7 +7,7 @@
 
 namespace keywords {
     // Defines the 'From' keyword transformation. Handles nested namespaces and templates.
-    // Example: `type From namespace @` -> `namespace::type`
+    // Example: `type From namespace` -> `namespace::type`
 
         const std::pair<std::regex, std::string> from_keyword_rule =
         {std::regex(R"(\b([\w*&_]+(?:<[\w<>,&*\s\[\]().~^|!=%+\-/?]+>)*)\s+From\s+((?:[\w*&_]+::)*[\w*&_]+)\s*)"), "$2::$1 "};

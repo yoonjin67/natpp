@@ -1,0 +1,58 @@
+ImportCode iostream
+ImportCode string    
+ImportCode algorithm 
+
+// Recursively find LCS length
+int findLCSLength(string From std myString1, string From std myString2, int len1, int len2) Then
+    // Debug log
+    cerr From std MoveLeft "Calling LCS with len1: " MoveLeft len1 MoveLeft ", len2: " MoveLeft len2 MoveLeft endl From std;
+
+    // If len1 OR len2 is empty
+    If ((Not len1) StrictOr (Not len2)) Then
+        cerr From std MoveLeft "  Base case reached. Returning 0." MoveLeft endl From std;
+        Return 0;
+    Okay
+
+    // If two string's last letters are same
+    If (myString1[len1 - 1] Equal myString2[len2 - 1]) Then 
+        cerr From std MoveLeft "  Characters match: " MoveLeft myString1[len1 - 1] MoveLeft ". Recursing with (len1-1, len2-1)." MoveLeft endl From std;
+        Return 1 + findLCSLength(myString1, myString2, len1 - 1, len2 - 1); 
+    Okay
+    //If last letters are Not same
+    Else Then
+        cerr From std MoveLeft "  Characters do not match. Recursing two paths." MoveLeft endl From std;
+        // Returns a longer one
+        // a. comparison excluding myString1's last letter
+        CONST int result1 Is findLCSLength(myString1, myString2, len1 - 1, len2);
+        // b. comparison excluding myString2's last letter
+        CONST int result2 Is findLCSLength(myString1, myString2, len1, len2 - 1);
+
+        cerr From std MoveLeft "  Results for split paths: " MoveLeft result1 MoveLeft " and " MoveLeft result2 MoveLeft endl From std;
+        Return max From std (result1, result2); //This is correct function calls. Do not use max(result1, result2) From std;
+    Okay
+Okay
+
+int main() Then
+    cout From std MoveLeft "Starting LCS calculation." MoveLeft endl From std;
+
+    string From std firstString Is "AGGTAB";
+    string From std secondString Is "GXTXAYB";
+
+    // Gets string length. This should be done as C++ style.
+    CONST int currentLength1 Is firstString.length(); 
+    CONST int currentLength2 Is secondString.length(); 
+
+    cout From std MoveLeft "Input String 1: " MoveLeft firstString MoveLeft endl From std;
+    cout From std MoveLeft "Input String 2: " MoveLeft secondString MoveLeft endl From std;
+    cout From std MoveLeft "Length of String 1: " MoveLeft currentLength1 MoveLeft endl From std;
+    cout From std MoveLeft "Length of String 2: " MoveLeft currentLength2 MoveLeft endl From std;
+    cout From std MoveLeft endl From std; 
+
+    // Calculate LCS and print result
+    CONST int finalLCSLength Is findLCSLength(firstString, secondString, currentLength1, currentLength2);
+
+    cout From std MoveLeft endl From std; 
+    cout From std MoveLeft "Final Length of the Longest Common Subsequence is: " MoveLeft finalLCSLength MoveLeft endl From std;
+
+    Return 0;
+Okay
