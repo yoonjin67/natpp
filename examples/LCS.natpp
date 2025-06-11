@@ -8,7 +8,7 @@ int findLCSLength(string From std myString1, string From std myString2, int len1
     cerr From std MoveLeft "Calling LCS with len1: " MoveLeft len1 MoveLeft ", len2: " MoveLeft len2 MoveLeft endl From std;
 
     // If len1 OR len2 is empty
-    If ((Not len1) StrictOr (Not len2)) Then
+    If ((Not len1) Or (Not len2)) Then
         cerr From std MoveLeft "  Base case reached. Returning 0." MoveLeft endl From std;
         Return 0;
     Okay
