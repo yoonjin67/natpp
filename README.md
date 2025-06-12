@@ -18,16 +18,17 @@ Every location, that requires {} in C++ should get proper Then, Okay.
 ### Logical and Bitwise Operators
 | DSL Keyword     | C/C++ Equivalent  |
 |------------------|------------------|
-| `Is`             | `=`              |
-| `And`            | `&&`             |
-| `Or`             | `||`        |
-| `Not`            | `!`              |
-| `StrictAnd`      | `&`              |
-| `StrictOr`       | `|`              |
-| `ReverseBit`     | `~`              |
-| `MoveLeft`       | `<<`             |
-| `MoveRight`      | `>>`             |
-| `Xor`            | `^`              |
+| `Is`             | =              |
+| `And`            | &&             |
+| `Or`             | ||            |
+| `Not`            | !              |
+| `StrictAnd`      | &              |
+| `StrictOr`       | |              |
+| `ReverseBit`     | ~              |
+| `MoveLeft`       | <<             |
+| `MoveRight`      | `
+>>             |
+| `Xor`            | ^              |
 C++ Redirection and bit shift has unified into MoveLeft, MoveRight.
 This gives visual, and integrated insight.
 
