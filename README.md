@@ -27,7 +27,8 @@ Every location, that requires {} in C++ should get proper Then, Okay.
 | `ReverseBit`     | `~`              |
 | `MoveLeft`       | `<<`             |
 | `MoveRight`      | `>>`             |
-| `Xor`            | `^`              |-------
+| `Xor`            | `^`              |
+-------
 C++ Redirection and bit shift has unified into MoveLeft, MoveRight.
 This gives visual, and integrated insight.
 
