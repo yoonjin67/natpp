@@ -20,7 +20,7 @@ Every location, that requires {} in C++ should get proper Then, Okay.
 |------------------|------------------|
 | `Is`             | `=`              |
 | `And`            | `&&`             |
-| `Or`             | `||`             |
+| `Or`             | `||`        |
 | `Not`            | `!`              |
 | `StrictAnd`      | `&`              |
 | `StrictOr`       | `|`              |
