@@ -47,7 +47,8 @@ This gives visual, and integrated insight.
 |------------------|------------------|
 | `Then`           | `{`              |
 | `Okay`           | `}`              |
-|--------------------------------------
+|
+--------------------------------------
 
 ### Miscellanous Qualifiers
 | DSL Keyword        | C/C++ Equivalent |
