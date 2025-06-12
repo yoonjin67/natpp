@@ -58,7 +58,8 @@ This gives visual, and integrated insight.
 |   `REGISTER`       | `register`       |
 |   `THREADLOCAL`    | `thread_local`   |
 |   `MUTABLE    `    | `mutable`        |
-|---------------------------------------
+|
+---------------------------------------
 
 ### Control Flow
 | DSL Keyword             | C/C++ Equivalent         |
@@ -72,7 +73,8 @@ This gives visual, and integrated insight.
 | `For(Start A CheckIf B Task C)` | `for (A; B; C)`  |
 | `ForEach(Item x In y)`   | `for (Item x : y)`      |
 | `member From namespace`  | `namespace::member`     |
-|----------------------------------------------------
+|
+----------------------------------------------------
 *warning: Do not use function(result1) From std. Correct form is indicated below*
 ```
 function From std (result1);
